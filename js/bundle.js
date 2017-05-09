@@ -416,7 +416,7 @@ function init() {
 
 function onTop() {
   	var str1 = document.createTextNode('Results for "' + input + '". Page ' + document.getElementsByTagName('h6')[0].innerHTML + ' from ' + Math.ceil(totalAmount/__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__boxesOnPage__["a" /* default */])()));
-  	var str2 = document.createTextNode('Hi, Stranger! It is page ' + document.getElementsByTagName('h6')[0].innerHTML + ' from ' + Math.ceil(totalAmount/__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__boxesOnPage__["a" /* default */])()));
+  	var str2 = document.createTextNode('Page ' + document.getElementsByTagName('h6')[0].innerHTML + ' from ' + Math.ceil(totalAmount/__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__boxesOnPage__["a" /* default */])()));
   	var topH5string = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5__createNode__["a" /* default */])('h5',str1);
   	var topH5paging = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5__createNode__["a" /* default */])('h5',str2);
   	topH5string.id = 'topH5string';
@@ -669,7 +669,7 @@ function updatePaging() {
   	document.getElementsByTagName('h6')[0].innerHTML = numberPage;
   		if ((document.getElementsByTagName('h5')[0])&&(document.getElementsByTagName('h5')[1])) {
   			str1 = 'Results for "' + input + '". Page ' + numberPage + ' from ' + Math.ceil(totalAmount/__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__boxesOnPage__["a" /* default */])());
-  			str2 = 'Nice to see you again! It is page ' + document.getElementsByTagName('h6')[0].innerHTML + ' from ' + Math.ceil(totalAmount/__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__boxesOnPage__["a" /* default */])());
+  			str2 = 'Page ' + document.getElementsByTagName('h6')[0].innerHTML + ' from ' + Math.ceil(totalAmount/__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__boxesOnPage__["a" /* default */])());
         document.getElementsByTagName('h5')[0].innerHTML = str2;
   			document.getElementsByTagName('h5')[1].innerHTML = str1;
 		}
