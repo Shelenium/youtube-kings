@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 11);
+/******/ 	return __webpack_require__(__webpack_require__.s = 12);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -205,6 +205,35 @@ function deleteElem(id) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = equalHeight;
+function equalHeight(){
+	var allHeights = [];
+	var maxheight = 0;
+	var set = document.getElementsByClassName('active');
+	console.log(set);
+
+	for (var i = 0; i < set.length; i++){
+		var elHeight = window.getComputedStyle(set[i],null).getPropertyValue('height');
+		var height = elHeight.slice(0,-2)-0;
+
+		if (height > maxheight) {
+			maxheight = height;
+			console.log(maxheight);
+		}
+	}
+	for (var i = 0; i < set.length; i++){
+		set[i].style.height = maxheight+'px';
+		console.log(set[i], set[i].style.height);
+	}
+
+
+}
+
+/***/ }),
+/* 7 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = firstActiveDiv;
 function firstActiveDiv() {
   	var coll = document.getElementsByClassName('active');
@@ -217,7 +246,7 @@ function firstActiveDiv() {
 }
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -231,7 +260,7 @@ function make(id,func) {
 }
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -247,7 +276,7 @@ function makeDisable(id,func) {
 }
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -262,7 +291,7 @@ function showActiveBox(start, amount) {
 }
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -317,22 +346,23 @@ function timespanToHumanString(startDate, endDate) {
 }
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__timespanToHumanString__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__timespanToHumanString__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__deleteElem__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__boxesOnPage__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__appear__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__createPaging__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__createNode__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__makeDisable__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__makeDisable__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__createBox__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__make__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__showActiveBox__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__firstActiveDiv__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__make__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__showActiveBox__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__firstActiveDiv__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__equalHeight__ = __webpack_require__(6);
 var startBoxNumber = 0;
 var currentStart = 0;
 var boxLoadAmount = 15;
@@ -476,6 +506,7 @@ function makeRequest() {
 			      		boxAmount = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__boxesOnPage__["a" /* default */])();
 			      	}
 			        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_9__showActiveBox__["a" /* default */])(currentStart, boxAmount);
+              __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_11__equalHeight__["a" /* default */])();
 			        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__createPaging__["a" /* default */])(pagingCreate);
               pagingCreate = true;
 			        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__makeDisable__["a" /* default */])('iLeft', goLeft);
@@ -561,6 +592,7 @@ function goRight() {
   	if (document.getElementById('boxDiv'+ currentStart)) {
   		allBoxNoAction();
   		__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_9__showActiveBox__["a" /* default */])(currentStart, boxAmount);
+      __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_11__equalHeight__["a" /* default */])();
   		var check = currentStart + boxLoadAmount;
  
 		 if (check >= endBoxNumber) { 
@@ -581,6 +613,7 @@ function goLeft() {
 
 	 allBoxNoAction();
 	 __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_9__showActiveBox__["a" /* default */])(currentStart, boxAmount);
+   __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_11__equalHeight__["a" /* default */])();
 	 updatePaging();
 	 __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_8__make__["a" /* default */])('iRight', goRight);
 
@@ -605,6 +638,7 @@ function resize() {
   	boxAmount = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__boxesOnPage__["a" /* default */])();
   		if (number >= 0) {
 			__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_9__showActiveBox__["a" /* default */])(number, boxAmount);
+      __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_11__equalHeight__["a" /* default */])();
   		}
   	updatePaging();
 }
@@ -690,6 +724,7 @@ function updatePaging() {
 
 
 
+
 //----------------------   DetectSwipe   ---------------------------//
 
 
@@ -697,7 +732,7 @@ function updatePaging() {
     touchEndCoords = {'x':-1, 'y':-1},// X and Y coordinates on mouseup or touchend events.
     direction = 'undefined',// Swipe direction
     minDistanceXAxis = 20,// Min distance on mousemove or touchmove on the X axis
-    maxDistanceYAxis = 20,// Max distance on mousemove or touchmove on the Y axis
+    maxDistanceYAxis = 100,// Max distance on mousemove or touchmove on the Y axis
     maxAllowedTime = 1000,// Max allowed time between swipeStart and swipeEnd
     startTime = 0,// Time on swipeStart
     elapsedTime = 0,// Elapsed time between swipeStart and swipeEnd

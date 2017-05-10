@@ -85,11 +85,13 @@ input {
 h2 > a {
   font: bold 5vw/6vw 'Source Sans Pro', sans-serif;
   color: #00e645;
-  padding: 0 10px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 h2 {
   margin: 15px 0 10px 0;
+  padding: 0 10px;
 }
 
 a:link {
