@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 12);
+/******/ 	return __webpack_require__(__webpack_require__.s = 13);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -192,6 +192,37 @@ function createPaging(check) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = createStartPreloader;
+function createStartPreloader(){
+	var preDiv = document.createElement('div');
+	preDiv.id = 'preDiv';
+	document.getElementsByTagName('body')[0].appendChild(preDiv);
+
+	var strH1 = document.createTextNode("Youtube kings");
+  	var strH4 = document.createTextNode("Find videos of anything");
+
+	var preImage = document.createElement('img');
+  	var preTitle = document.createElement('h1');
+  	var preSemiTitle = document.createElement('h4');
+
+  	preImage.src = 'images/crown.svg';
+  	preTitle.appendChild(strH1);
+  	preSemiTitle.appendChild(strH4);
+
+  	var preloader = document.getElementById('preDiv');
+
+  	preloader.appendChild(preImage);
+  	preloader.appendChild(preTitle);
+  	preloader.appendChild(preSemiTitle);
+
+
+}
+
+/***/ }),
+/* 6 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = deleteElem;
 function deleteElem(id) {
 	if (document.getElementById(id)) {
@@ -201,7 +232,7 @@ function deleteElem(id) {
 }
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -210,7 +241,6 @@ function equalHeight(){
 	var allHeights = [];
 	var maxheight = 0;
 	var set = document.getElementsByClassName('active');
-	console.log(set);
 
 	for (var i = 0; i < set.length; i++){
 		var elHeight = window.getComputedStyle(set[i],null).getPropertyValue('height');
@@ -218,19 +248,17 @@ function equalHeight(){
 
 		if (height > maxheight) {
 			maxheight = height;
-			console.log(maxheight);
 		}
 	}
 	for (var i = 0; i < set.length; i++){
 		set[i].style.height = maxheight+'px';
-		console.log(set[i], set[i].style.height);
 	}
 
 
 }
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -246,7 +274,7 @@ function firstActiveDiv() {
 }
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -260,7 +288,7 @@ function make(id,func) {
 }
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -276,7 +304,7 @@ function makeDisable(id,func) {
 }
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -291,7 +319,7 @@ function showActiveBox(start, amount) {
 }
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -346,23 +374,24 @@ function timespanToHumanString(startDate, endDate) {
 }
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__timespanToHumanString__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__deleteElem__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__timespanToHumanString__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__deleteElem__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__boxesOnPage__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__appear__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__createPaging__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__createNode__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__makeDisable__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__makeDisable__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__createBox__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__make__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__showActiveBox__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__firstActiveDiv__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__equalHeight__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__make__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__showActiveBox__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__firstActiveDiv__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__equalHeight__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__createStartPreloader__ = __webpack_require__(5);
 var startBoxNumber = 0;
 var currentStart = 0;
 var boxLoadAmount = 15;
@@ -378,9 +407,11 @@ var video;
 var str, str1, str2;
 var pagingCreate = false;
 var finishPage = false;
-var firstRight = true;
+var firstRight = false;
 var input = '';
 var startX, startY, finishX, finishY;
+var point = 0;
+var timeToChange = [0];
 
 //----------------------- create page -----------------------------//
 startPage();
@@ -389,7 +420,7 @@ startPage();
 
 function startPage() { // creating main elements on page
   	var mainDiv = document.createElement('div');
-  	var titleNode = document.createTextNode("Youtube kings");
+
   	var title = document.createElement('h1');
   	var formSearch = document.createElement('form');
   	var input = document.createElement('input');
@@ -397,7 +428,7 @@ function startPage() { // creating main elements on page
 
   	mainDiv.id = 'mainDiv';
   	stringSearch.id = 'stringSearch';
-  	title.appendChild(titleNode);
+
   	mainDiv.appendChild(title);
   	input.id = 'inputSearch';
   	input.name = 'inputSearch';
@@ -412,7 +443,10 @@ function startPage() { // creating main elements on page
   	document.getElementById('mainDiv').appendChild(stringSearch);
   	document.getElementsByTagName('div')[0].classList.add('main-div');
 
-  	input.onchange = prevent; 
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_12__createStartPreloader__["a" /* default */])();
+    document.getElementById('preDiv').addEventListener('click', onPreClick);
+
+  	input.onchange = prevent;
   	window.onresize = resize;
 }
 
@@ -425,15 +459,30 @@ function prevent(e) { //
   	endBoxNumber = 15;
  
   	finishPage = false;
-  	firstRight = true;
+  	firstRight = false;
 
   	likeAmount = [], dislikeAmount = [], viewAmount = [];
+    point = 0;
+    timeToChange = [0];
+    if (document.getElementById('preDiv')){
+      __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__deleteElem__["a" /* default */])('preDiv');
+      onPreClick();
+    }
+    
   	__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__deleteElem__["a" /* default */])('containerDiv');
   	__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__deleteElem__["a" /* default */])('topH5string');
   	__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__deleteElem__["a" /* default */])('topH5paging');
   
   	document.getElementById('inputSearch').blur();
   	init(); // set key for request
+}
+
+
+function onPreClick(){
+__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__deleteElem__["a" /* default */])('preDiv');
+document.getElementById('inputSearch').focus();
+var titleNode = document.createTextNode("Youtube kings");
+document.getElementsByTagName('h1')[0].appendChild(titleNode);
 }
 
 function init() {
@@ -445,6 +494,7 @@ function init() {
 }
 
 function onTop() {
+  if (document.getElementsByTagName('h6')[0]){
   	var str1 = document.createTextNode('Results for "' + input + '". Page ' + document.getElementsByTagName('h6')[0].innerHTML + ' from ' + Math.ceil(totalAmount/__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__boxesOnPage__["a" /* default */])()));
   	var str2 = document.createTextNode('Page ' + document.getElementsByTagName('h6')[0].innerHTML + ' from ' + Math.ceil(totalAmount/__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__boxesOnPage__["a" /* default */])()));
   	var topH5string = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5__createNode__["a" /* default */])('h5',str1);
@@ -453,6 +503,7 @@ function onTop() {
   	topH5paging.id = 'topH5paging';
   	document.getElementById('stringSearch').appendChild(topH5string);
   	document.getElementById('pagingSpan').appendChild(topH5paging);
+  }
 };
 
 function onFinish() {
@@ -469,7 +520,7 @@ function onFinish() {
 
 function makeRequest() {
 	__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__deleteElem__["a" /* default */])('finish')
-  	endBoxNumber = startBoxNumber + boxLoadAmount;
+ // 	endBoxNumber = startBoxNumber + boxLoadAmount;
   	input = document.getElementById('inputSearch').value;
   		if (input != '') {
     		var request = gapi.client.youtube.search.list({
@@ -481,9 +532,10 @@ function makeRequest() {
 
 		    request.execute(function(response) {
 		      	video = response.result.items;
+            endBoxNumber = startBoxNumber + video.length;
 		      	totalAmount = response.result.pageInfo.totalResults;
 		       		if (totalAmount < boxLoadAmount) {
-		       		//	finishPage = true;
+		       			finishPage = true;
 		       			endBoxNumber = totalAmount;
 		      		}
 		      		if (totalAmount == 0) {
@@ -540,10 +592,6 @@ function Stat(callback) {
 }
       
 function takeNextPage() {
-    endBoxNumber = startBoxNumber + boxLoadAmount;
-      	if (endBoxNumber >= totalAmount) {
-      		endBoxNumber = totalAmount;
-      	}
 
 	  	if (input != '') {
 	        var request = gapi.client.youtube.search.list({
@@ -557,9 +605,12 @@ function takeNextPage() {
 	        request.execute(function(response) {
 	          	video = response.result.items;
 	          	nextTokenP = response.result.nextPageToken;
-	  		  		if (video.length < boxLoadAmount) {
-	  		  	 		endBoxNumber -= boxLoadAmount-video.length;
-	  		  		}
+               endBoxNumber += video.length;
+               if (!nextTokenP) { totalAmount = endBoxNumber; }
+              if (endBoxNumber >= totalAmount) {
+          endBoxNumber = totalAmount;
+        }
+
 	          	str = '';
 	          	for (var i = startBoxNumber; i < endBoxNumber; i++) {
 	            	str = str + ', ' + response.result.items[i%15].id.videoId;
@@ -577,15 +628,19 @@ function takeNextPage() {
 
 
 function goRight() {
+
   	boxAmount = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__boxesOnPage__["a" /* default */])();
   	currentStart += boxAmount;
+
   	if (currentStart+boxAmount > totalAmount) {
 		finishPage = true;
 		__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__makeDisable__["a" /* default */])('iRight', goRight);
 		boxAmount = totalAmount-currentStart;		
 	}
-  	if ((firstRight)&&(nextTokenP)) { 
-  		startBoxNumber += boxLoadAmount;
+  	if ((firstRight)&&(nextTokenP)) {
+  
+  		startBoxNumber = endBoxNumber;
+      timeToChange.push(startBoxNumber);
   		takeNextPage(); 
   		firstRight = false;
   	}
@@ -593,9 +648,9 @@ function goRight() {
   		allBoxNoAction();
   		__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_9__showActiveBox__["a" /* default */])(currentStart, boxAmount);
       __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_11__equalHeight__["a" /* default */])();
-  		var check = currentStart + boxLoadAmount;
  
-		 if (check >= endBoxNumber) { 
+		 if (currentStart >= timeToChange[point]) { 
+        point++;
 		  	firstRight = true; 
 		 }
   			updatePaging();
@@ -683,7 +738,7 @@ function createContainer() {
   	document.getElementsByTagName('body')[0].appendChild(containerDiv);
   	document.getElementById('containerDiv').classList.add('containerDiv');
   	
-  	var htmlEl = document.getElementsByTagName('html')[0];
+  	var htmlEl = document.getElementsByTagName('body')[0];
 	addMultipleListeners(htmlEl, 'mousedown touchstart', swipeStart);
 	addMultipleListeners(htmlEl, 'mousemove touchmove', swipeMove);
 	addMultipleListeners(htmlEl, 'mouseup touchend', swipeEnd);
@@ -700,14 +755,18 @@ function updatePaging() {
   		}
   	boxAmount = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__boxesOnPage__["a" /* default */])();
   	var numberPage = Math.ceil(number / boxAmount)+1;
-  	document.getElementsByTagName('h6')[0].innerHTML = numberPage;
+      if (document.getElementsByTagName('h6')[0]){
+        document.getElementsByTagName('h6')[0].innerHTML = numberPage;
+      }
+  	
   		if ((document.getElementsByTagName('h5')[0])&&(document.getElementsByTagName('h5')[1])) {
-  			str1 = 'Results for "' + input + '". Page ' + numberPage + ' from ' + Math.ceil(totalAmount/__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__boxesOnPage__["a" /* default */])());
+        str1 = 'Results for "' + input + '". Page ' + numberPage + ' from ' + Math.ceil(totalAmount/__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__boxesOnPage__["a" /* default */])());
   			str2 = 'Page ' + document.getElementsByTagName('h6')[0].innerHTML + ' from ' + Math.ceil(totalAmount/__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__boxesOnPage__["a" /* default */])());
         document.getElementsByTagName('h5')[0].innerHTML = str2;
   			document.getElementsByTagName('h5')[1].innerHTML = str1;
 		}
 }
+
 
 
 
