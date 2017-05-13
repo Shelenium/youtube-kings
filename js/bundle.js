@@ -509,7 +509,7 @@ function onTop() {
 function onFinish() {
   	allBoxNoAction();
   	__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__makeDisable__["a" /* default */])('iRight', goRight);
-  	var str = document.createTextNode(':( ' + ' There is no result for the "' + input + '".');
+  	var str = document.createTextNode(' There is no result for the "' + input + '" ' +' :(');
   	var finish = document.createElement('h4');
   	finish.appendChild(str);
   	finish.id = 'finish';
@@ -520,7 +520,6 @@ function onFinish() {
 
 function makeRequest() {
 	__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__deleteElem__["a" /* default */])('finish')
- // 	endBoxNumber = startBoxNumber + boxLoadAmount;
   	input = document.getElementById('inputSearch').value;
   		if (input != '') {
     		var request = gapi.client.youtube.search.list({
@@ -535,14 +534,14 @@ function makeRequest() {
             endBoxNumber = startBoxNumber + video.length;
 		      	totalAmount = response.result.pageInfo.totalResults;
 		       		if (totalAmount < boxLoadAmount) {
-		       	//		finishPage = true;
-		       			endBoxNumber = totalAmount;
+		       			endBoxNumber = video.length;
+                totalAmount = video.length;
 		      		}
 		      		if (totalAmount == 0) {
 		      			finishPage = true;
 		      			onFinish();
 		      		}
-		      		if (totalAmount < __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__boxesOnPage__["a" /* default */])()) {
+		      		if (totalAmount <= __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__boxesOnPage__["a" /* default */])()) {
 		      			finishPage = true;
 		      		}
 		      	nextTokenP = response.result.nextPageToken;

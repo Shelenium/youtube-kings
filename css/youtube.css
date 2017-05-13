@@ -165,7 +165,7 @@ h3 {
 
 #mainDiv h4 {
   font: normal 20px/24px 'Source Sans Pro', sans-serif;
-  margin: 60px auto;
+  margin: 50px auto;
   color: #75887b;
   background-color: #001e09;
   background-image: url('../images/line.png');
@@ -300,9 +300,8 @@ to {top: 0px;}
 #preDiv h4 {
   font: normal 3vw/5vw 'Source Sans Pro', sans-serif;
   letter-spacing: 1vw;
-  color: white;
+  color: #45644f;
   margin: 10px 0;
-  opacity: 0.2;
 
 }
 
