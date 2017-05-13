@@ -75,10 +75,19 @@ input {
   background: #001e09;
   display: none;
   vertical-align: top;
+  
 }
 
 .active {
+  position: relative;
   display: inline-block;
+  -webkit-transition: all 0.5s ease;
+  animation: active_move 0.8s ease;
+}
+
+@keyframes active_move {
+from {opacity: 0;}
+to {opacity: 1;}
 }
 
 .noDisplay {
@@ -154,10 +163,23 @@ h3 {
   opacity: 0.7;
 }
 
-h4 {
+#mainDiv h4 {
   font: normal 20px/24px 'Source Sans Pro', sans-serif;
-  margin: 40px 0;
-  color: white;
+  margin: 60px auto;
+  color: #75887b;
+  background-color: #001e09;
+  background-image: url('../images/line.png');
+  width: 60%;
+  max-width: 600px;
+  padding: 20px 10px 20px 10px;
+  text-align: center;
+  -webkit-transition: all 0.5s ease;
+  border: 1px solid white;
+  outline: 20px solid #001e09;
+  opacity: 1;
+  cursor: pointer;
+  position: relative;;
+  animation: move 1.2s ease;
 }
 
 h5 {
@@ -245,6 +267,7 @@ ul.paging li:nth-child(2):hover #pagingSpan {
 
 #preDiv {
   background-color: #001e09;
+  background-image: url('../images/line.png');
   width: 60%;
   max-width: 600px;
   padding: 30px 10px 20px 10px;
@@ -270,6 +293,7 @@ to {top: 0px;}
   font: bold 14vw/16vw 'Exo', sans-serif;
   margin: 20px 0;
   letter-spacing: 0;
+  background: none;
 }
 
 

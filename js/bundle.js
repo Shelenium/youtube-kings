@@ -535,7 +535,7 @@ function makeRequest() {
             endBoxNumber = startBoxNumber + video.length;
 		      	totalAmount = response.result.pageInfo.totalResults;
 		       		if (totalAmount < boxLoadAmount) {
-		       			finishPage = true;
+		       	//		finishPage = true;
 		       			endBoxNumber = totalAmount;
 		      		}
 		      		if (totalAmount == 0) {
